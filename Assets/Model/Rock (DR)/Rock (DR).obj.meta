@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da3ac69f0bb229347bbf2c95592227d9
+guid: e09f611346ba07f45bd9b4ca1fc62973
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,13 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Mesh_3740.rip_Tex_013_Mesh_3740.rip_Tex_013_Tex_0131_0.dds_flame1.pngMat
-    second: {fileID: 2100000, guid: bc2988481bf1f8240912f8e64068ad01, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mesh_3741.rip_Tex_013_Mesh_3741.rip_Tex_013_Tex_0131_0.dds.001_flame1.pngMat
-    second: {fileID: 2100000, guid: 03a56c8fd3b1cd2409f5bcb2f28b3d93, type: 2}
+      name: defaultMat
+    second: {fileID: 2100000, guid: eb2bd4c8db365d14092bcf49b62032b4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

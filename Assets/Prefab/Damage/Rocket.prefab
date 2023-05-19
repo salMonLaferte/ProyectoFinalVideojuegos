@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5921540987318687267}
   - component: {fileID: 4191544762068713307}
   - component: {fileID: 7278919422442963691}
+  - component: {fileID: 2912869830046708825}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -64,9 +65,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 60
   range: 60
-  damage: 10
+  damage: 15
   explosion: {fileID: 6779848410724936075, guid: a5c0f4c2193831741bd66b14e485e8da, type: 3}
   explosionParticles: {fileID: 3668251638647953552, guid: f4718649f1847154fa6e8360ddf7b821, type: 3}
+--- !u!65 &2912869830046708825
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433604719989381174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 4.4127307}
+  m_Center: {x: 0, y: 0, z: 1.7063651}
 --- !u!1 &6625405403383168222
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +92,6 @@ GameObject:
   - component: {fileID: 8302352452917675462}
   - component: {fileID: 4476624870185094159}
   - component: {fileID: 2375793347724877018}
-  - component: {fileID: 1635713947121857605}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -151,16 +164,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1635713947121857605
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6625405403383168222}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

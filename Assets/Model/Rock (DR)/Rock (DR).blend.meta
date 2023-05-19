@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: da3ac69f0bb229347bbf2c95592227d9
+guid: 3756235ee2958ff4bbbedc22a989bc16
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mesh_3740.rip_Tex_013_Mesh_3740.rip_Tex_013_Tex_0131_0.dds_flame1.pngMat
-    second: {fileID: 2100000, guid: bc2988481bf1f8240912f8e64068ad01, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Mesh_3741.rip_Tex_013_Mesh_3741.rip_Tex_013_Tex_0131_0.dds.001_flame1.pngMat
-    second: {fileID: 2100000, guid: 03a56c8fd3b1cd2409f5bcb2f28b3d93, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 10
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -98,7 +88,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 10
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

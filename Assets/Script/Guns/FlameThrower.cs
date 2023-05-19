@@ -11,7 +11,7 @@ public class FlameThrower : MonoBehaviour, IGun
     /// <summary>
     /// Cooldown of the pistol
     /// </summary>
-    float cooldown = 1f;
+    float cooldown = .05f;
     /// <summary>
     /// Is the weapon on coolDown
     /// </summary>
@@ -23,7 +23,10 @@ public class FlameThrower : MonoBehaviour, IGun
     Bullet.AppliesDamageTo appliesDamageTo;
 
     [SerializeField]
-    GameObject flames;
+    GameObject bullet;
+
+    [SerializeField]
+    GameObject bulletOrigin;
 
     /// <summary>
     /// <inheritdoc/>
@@ -43,8 +46,10 @@ public class FlameThrower : MonoBehaviour, IGun
     {
         if (onCooldown)
             return;
-        flames.SetActive(true);
         StartCoroutine(Cooldown());
+        Vector3 dir = VectorTools.DirectionXZ(bulletOrigin.transform.position, selectedPoint);
+        GameObject b = GameObject.Instantiate(bullet, bulletOrigin.transform.position, transform.rotation);
+        b.GetComponent<Bullet>().Initialize(appliesDamageTo, dir);
     }
 
     /// <summary>
@@ -55,7 +60,6 @@ public class FlameThrower : MonoBehaviour, IGun
     {
         onCooldown = true;
         yield return new WaitForSeconds(cooldown);
-        flames.SetActive(false);
         onCooldown = false;
     }
 

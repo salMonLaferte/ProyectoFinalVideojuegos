@@ -21,11 +21,13 @@ public class Player : Char
     [SerializeField]
     public Transform bulletOrigin;
 
+    GunSelector gunSelector = new GunSelector();
+
     protected override void Start()
     {
         base.Start();
         characterDied.AddListener(GameManager.OnPlayerDied);
-        ChangeGun("FlameThrower");
+        ChangeGun(gunSelector.GetWeapon());
     }
 
     protected override void Update()
@@ -53,6 +55,15 @@ public class Player : Char
         if(stateMachine.GetCurrent() is CharShooting && Input.GetMouseButton(1)){
             bufferedClick = selectedPoint;
         }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            ChangeGun(gunSelector.PreviousWeapon());
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            ChangeGun(gunSelector.NextWeapon());
+        }
+
     }
 
     void OnClick(Vector3 point){

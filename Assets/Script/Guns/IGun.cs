@@ -31,3 +31,4 @@ public interface IGun
     /// <returns></returns>
     abstract void SetAppliesDamageTo(Bullet.AppliesDamageTo damageTo);
 }
+

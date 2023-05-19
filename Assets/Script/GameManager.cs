@@ -9,6 +9,6 @@ public static class  GameManager
         if(currentCheckpoint != null ){
             player.RespawnOnPoint(currentCheckpoint.GetRespawnPoint());
         }
-        
     }
 }
+

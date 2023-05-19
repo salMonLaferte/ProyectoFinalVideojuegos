@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4934826918986291857}
   m_Layer: 0
   m_Name: lamp
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8263241147175511664}
   m_Layer: 0
   m_Name: Spot Light
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,6 +181,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 35831381decf1c8448335c5b870c6378, type: 3}
       propertyPath: m_Name
       value: Office_lamp_1970
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 35831381decf1c8448335c5b870c6378, type: 3}
+      propertyPath: m_TagString
+      value: Environment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35831381decf1c8448335c5b870c6378, type: 3}

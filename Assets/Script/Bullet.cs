@@ -5,28 +5,31 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
+    [SerializeField]
     /// <summary>
     /// Speed of the bullet in units per second
     /// </summary>
-    public float speed;
+    protected float speed;
+    [SerializeField]
     /// <summary>
     /// How far the bullet can get
     /// </summary>
-    public float range;
+    protected float range;
     /// <summary>
     /// Direction of the bullet, needs to be normalized if is changed
     /// </summary>
     [HideInInspector]
-    public Vector3 direction; 
+    protected Vector3 direction; 
     /// <summary>
     /// Type of characters that this bullet aplies damage to
     /// </summary>
     [HideInInspector]
-    public AppliesDamageTo appliesDamageTo;
+    protected AppliesDamageTo appliesDamageTo;
+    [SerializeField]
     /// <summary>
     /// Damage of the bullet
     /// </summary>
-    public float damage = 5;
+    protected float damage;
     /// <summary>
     /// Rigidbody of this object
     /// </summary>
@@ -34,12 +37,23 @@ public class Bullet : MonoBehaviour
     /// <summary>
     /// Timer to keep track of how much time the bullet has been alive and destroy it when necessary
     /// </summary>
-    float timer = 0;
+    protected float timer = 0;
 
 
     protected virtual void Start(){
         rb = GetComponent<Rigidbody>();
         direction.Normalize();
+    }
+
+    /// <summary>
+    /// Method to call when the bullet is shot
+    /// </summary>
+    /// <param name="appliesDamageTo"></param>
+    /// <param name="direction"></param>
+    public virtual void Initialize(Bullet.AppliesDamageTo appliesDamageTo, Vector3 direction)
+    {
+        this.appliesDamageTo = appliesDamageTo;
+        this.direction = direction;
     }
 
     /// <summary>

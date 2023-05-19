@@ -127,8 +127,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85f32919dc351bc4cacf4b4bacf0c9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 70
-  range: 40
-  direction: {x: 0, y: 0, z: 0}
-  appliesDamageTo: 0
+  speed: 90
+  range: 100
   damage: 5

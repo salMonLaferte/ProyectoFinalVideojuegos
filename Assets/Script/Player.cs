@@ -18,16 +18,14 @@ public class Player : Char
 
     GameObject clickIndicator;
 
-    IGun currentGun;
-
     [SerializeField]
     public Transform bulletOrigin;
 
     protected override void Start()
     {
         base.Start();
-        bullet.GetComponent<Bullet>().appliesDamageTo = appliesDamageTo;
         characterDied.AddListener(GameManager.OnPlayerDied);
+        ChangeGun("FlameThrower");
     }
 
     protected override void Update()
@@ -44,10 +42,12 @@ public class Player : Char
 
             bufferedClick = Vector3.zero;
         }
-        if(Input.GetMouseButton(0) && (stateMachine.GetCurrent() is CharIddle || stateMachine.GetCurrent() is CharMoving) )
+        //Shoot current gun
+        if(Input.GetMouseButton(0) && (stateMachine.GetCurrent() is CharIddle || stateMachine.GetCurrent() is CharMoving || stateMachine.GetCurrent() is CharShooting) )
         {
             Vector3 dir = VectorTools.DirectionXZ(bulletOrigin.position, selectedPoint);
-            stateMachine.ChangeState(new CharShooting(dir, bullet, this, bulletOrigin));
+            stateMachine.ChangeState(new CharShooting(dir, this));
+            currentGun.Shoot(selectedPoint);
             GameObject.Destroy(clickIndicator);
         }
         if(stateMachine.GetCurrent() is CharShooting && Input.GetMouseButton(1)){
@@ -62,5 +62,11 @@ public class Player : Char
 
     protected override void FixedUpdate(){
         base.FixedUpdate();
+    }
+
+    public override void ChangeGun(string name)
+    {
+        base.ChangeGun(name);
+        currentGun.SetAppliesDamageTo(appliesDamageTo);
     }
 }

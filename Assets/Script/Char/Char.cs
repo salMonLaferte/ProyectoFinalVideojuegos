@@ -27,7 +27,15 @@ public class Char : MonoBehaviour
     protected Vector3 movingTo;
     
     protected CharStateMachine stateMachine;
-    
+
+    protected IGun currentGun;
+
+    [SerializeField]
+    protected GameObject gunPosition;
+
+    [SerializeField]
+    protected GameObject gun;
+
     [SerializeField]
     protected GameObject healthBarPrefab;
     
@@ -47,7 +55,6 @@ public class Char : MonoBehaviour
              bar.GetComponent<ArmorBar>().characterRef = this;
              bar.transform.SetParent(transform);
         }
-           
     }
 
     protected virtual void Start(){
@@ -141,6 +148,12 @@ public class Char : MonoBehaviour
         damageCoroutineActive = false;
     }
 
+    /// <summary>
+    /// Tells if a character should take damage
+    /// </summary>
+    /// <param name="c"></param>
+    /// <param name="appliesDamageTo"></param>
+    /// <returns></returns>
     public static bool ShouldTakeDamage( Char c, Bullet.AppliesDamageTo appliesDamageTo){
         if(appliesDamageTo == Bullet.AppliesDamageTo.Everyone)
             return true;
@@ -151,17 +164,48 @@ public class Char : MonoBehaviour
         return false;
     }
 
-    public float GetMaxHealth(){
+    /// <summary>
+    /// Returns the max armor of the character
+    /// </summary>
+    /// <returns></returns>
+    public float GetMaxArmor(){
         return maxArmor;
     }
 
+    /// <summary>
+    /// Restores an amount of armor
+    /// </summary>
     public void RestoreArmor(){
         ModifyArmor(maxArmor);
     }
 
+    /// <summary>
+    /// Respawns the character in a determined position
+    /// </summary>
+    /// <param name="position"></param>
     public void RespawnOnPoint(Vector3 position){
         RestoreArmor();
         stateMachine.ChangeState(new CharIddle());
         transform.position = position;
     }
+
+    /// <summary>
+    /// Change the gun of the character
+    /// </summary>
+    /// <param name="name"></param>
+    public virtual void ChangeGun(string name)
+    {
+        GameObject gunPrefab = GameObject.Instantiate((UnityEngine.GameObject)Resources.Load(name), gunPosition.transform.position, transform.rotation);
+        gunPrefab.transform.SetParent(transform);
+        GameObject.Destroy(gun);
+        gun = gunPrefab;
+        if (name == "Pistol")
+            currentGun = (IGun)gunPrefab.GetComponent<Pistol>();
+        if (name == "RocketLauncher")
+            currentGun = (IGun)gunPrefab.GetComponent<Bazooka>();
+        if (name == "FlameThrower")
+            currentGun = (IGun)gunPrefab.GetComponent<FlameThrower>();
+    }
+
+
 }

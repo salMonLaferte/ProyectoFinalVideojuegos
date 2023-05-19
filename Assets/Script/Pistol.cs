@@ -5,17 +5,14 @@ using UnityEngine;
 public class Pistol : MonoBehaviour, IGun
 {
     /// <summary>
+    /// Name of the gun
+    /// </summary>
+    new string name = "Pistol";
+    /// <summary>
     /// Cooldown of the pistol
     /// </summary>
-    float cooldown = .4f;
-    /// <summary>
-    /// Damage of the gun
-    /// </summary>
-    float damage = 5;
-    /// <summary>
-    /// Speed of the bullets in units/second
-    /// </summary>
-    float speed = 20;
+    float cooldown = .3f;
+    
     /// <summary>
     /// Bullet that is shoot by this gun
     /// </summary>
@@ -26,6 +23,16 @@ public class Pistol : MonoBehaviour, IGun
     /// </summary>
     [SerializeField]
     GameObject bulletOrigin;
+
+    /// <summary>
+    /// Is the weapon on coolDown
+    /// </summary>
+    bool onCooldown = false;
+
+    /// <summary>
+    /// Who can damage this weapon
+    /// </summary>
+    Bullet.AppliesDamageTo appliesDamageTo;
 
     /// <summary>
     /// <inheritdoc/>
@@ -40,26 +47,51 @@ public class Pistol : MonoBehaviour, IGun
     /// <inheritdoc/>
     /// </summary>
     /// <returns></returns>
-    public float GetDamage()
+    public void Shoot(Vector3 selectedPoint)
     {
-        return damage;
+        if (onCooldown)
+            return;
+        StartCoroutine(Cooldown());
+        Vector3 dir = VectorTools.DirectionXZ(bulletOrigin.transform.position, selectedPoint);
+        GameObject b = GameObject.Instantiate(bullet, bulletOrigin.transform.position, transform.rotation);
+        b.GetComponent<Bullet>().Initialize(appliesDamageTo, dir);
     }
-    
+
     /// <summary>
-    /// <inheritdoc/>
+    /// Cooldown coroutine that sets the pistol on cooldown for the amount of seconds specified
     /// </summary>
     /// <returns></returns>
-    public float GetSpeed()
+    IEnumerator Cooldown()
     {
-        return speed;
+        onCooldown = true;
+        yield return new WaitForSeconds(cooldown);
+        onCooldown = false;
     }
 
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
     /// <returns></returns>
-    public float Shoot()
+    public string GetName()
     {
-        throw new System.NotImplementedException();
+        return name;
+    }
+
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    /// <returns></returns>
+    public Bullet.AppliesDamageTo GetAppliesDamageTo()
+    {
+        return appliesDamageTo;
+    }
+
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    /// <param name="damageTo"></param>
+    public void SetAppliesDamageTo(Bullet.AppliesDamageTo damageTo)
+    {
+        appliesDamageTo = damageTo;
     }
 }

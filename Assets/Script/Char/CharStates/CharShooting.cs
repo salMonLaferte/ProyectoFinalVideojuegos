@@ -4,38 +4,33 @@ using UnityEngine;
 
 public class CharShooting : CharState
 {
+    /// <summary>
+    /// Direction in which is shooting
+    /// </summary>
     Vector3 direction;
-    GameObject bullet;
+    /// <summary>
+    /// Origin character
+    /// </summary>
     Char character;
-    Transform origin;
-    float timer;
-    float timeBetwenBullets;
 
-    public CharShooting(Vector3 direction, GameObject bullet, Char character, Transform origin){
+    public CharShooting(Vector3 direction, Char character){
         this.direction = direction;
-        this.bullet = bullet;
         this.character = character;
-        timeBetwenBullets  = .25f;
-        this.origin = origin;
     }
     public override void Start()
     {
+        //Rotates the character to face the place is shooting and make him stay still
         base.Start();
-        timer = 0;
         character.gameObject.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.x, direction.z)*Mathf.Rad2Deg, Vector3.up);
-        GameObject b = GameObject.Instantiate(bullet, origin.position, Quaternion.identity);
         character.GetComponent<Rigidbody>().velocity = new Vector3(0,character.GetComponent<Rigidbody>().velocity.y,0 );
-        b.GetComponent<Bullet>().direction = direction;
-        
     }
 
     public override void Update()
     {
+        //If the left mouse click is not pressed player is not shooting anymore
         base.Update();
-        timer += Time.deltaTime;
-        if(timer >= timeBetwenBullets ){
+        if (!Input.GetMouseButton(0))
             ExitState();
-        }
     }
 
     public override void FixedUpdate()

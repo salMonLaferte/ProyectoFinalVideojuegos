@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 6838578110362088702}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,10 +258,9 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  speed: 1000
+  speed: 30
   maxArmor: 100
   gunPosition: {fileID: 6327183813686611891}
-  gun: {fileID: 0}
   healthBarPrefab: {fileID: 0}
   characterDied:
     m_PersistentCalls:
@@ -273,7 +272,6 @@ MonoBehaviour:
   appliesDamageTo: 0
   bufferedClick: {x: 0, y: 0, z: 0}
   clickIndicatorPrefab: {fileID: 6262170733800664089, guid: 479cefdbf43aaaf4abe8ee2c37699509, type: 3}
-  bulletOrigin: {fileID: 7337354714024479954}
 --- !u!65 &6838578110362088702
 BoxCollider:
   m_ObjectHideFlags: 0

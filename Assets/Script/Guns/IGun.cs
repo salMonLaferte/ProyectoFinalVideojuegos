@@ -11,7 +11,7 @@ public interface IGun
     /// </summary>
     abstract float GetCooldown();
     /// <summary>
-    /// Shots the weapon
+    /// Shots the weapon in direction to the selectedPoint
     /// </summary>
     /// <returns></returns>
     abstract void Shoot(Vector3 selectedPoint);

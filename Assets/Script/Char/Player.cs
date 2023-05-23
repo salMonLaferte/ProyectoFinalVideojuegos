@@ -18,9 +18,6 @@ public class Player : Char
 
     GameObject clickIndicator;
 
-    [SerializeField]
-    public Transform bulletOrigin;
-
     GunSelector gunSelector = new GunSelector();
 
     protected override void Start()
@@ -35,21 +32,19 @@ public class Player : Char
         base.Update();
         Vector3 selectedPoint = GetSelectedGroundPoint();
         if(Input.GetMouseButton(1) && (stateMachine.GetCurrent() is CharIddle || stateMachine.GetCurrent() is CharMoving)){
-            stateMachine.ChangeState( new CharMoving(selectedPoint, this, speed ) );
+            stateMachine.ChangeState( new CharMoving(selectedPoint, this ) );
             bufferedClick = Vector3.zero;
         }
         if(!Input.GetMouseButton(1) && bufferedClick != Vector3.zero && (stateMachine.GetCurrent() is CharIddle || stateMachine.GetCurrent() is CharMoving)){
             selectedPoint = bufferedClick;
-            stateMachine.ChangeState( new CharMoving(selectedPoint, this, speed ) );
+            stateMachine.ChangeState( new CharMoving(selectedPoint, this) );
 
             bufferedClick = Vector3.zero;
         }
         //Shoot current gun
-        if(Input.GetMouseButton(0) && (stateMachine.GetCurrent() is CharIddle || stateMachine.GetCurrent() is CharMoving || stateMachine.GetCurrent() is CharShooting) )
+        if(Input.GetMouseButton(0) && (stateMachine.GetCurrent() is CharIddle || stateMachine.GetCurrent() is CharMoving  ))
         {
-            Vector3 dir = VectorTools.DirectionXZ(bulletOrigin.position, selectedPoint);
-            stateMachine.ChangeState(new CharShooting(dir, this));
-            currentGun.Shoot(selectedPoint);
+            Shoot(selectedPoint);
             GameObject.Destroy(clickIndicator);
         }
         if(stateMachine.GetCurrent() is CharShooting && Input.GetMouseButton(1)){

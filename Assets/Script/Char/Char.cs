@@ -33,8 +33,8 @@ public class Char : MonoBehaviour
     [SerializeField]
     protected GameObject gunPosition;
 
-    [SerializeField]
-    protected GameObject gun;
+    [HideInInspector]
+    protected GameObject currentGunObject;
 
     [SerializeField]
     protected GameObject healthBarPrefab;
@@ -55,6 +55,7 @@ public class Char : MonoBehaviour
              bar.GetComponent<ArmorBar>().characterRef = this;
              bar.transform.SetParent(transform);
         }
+        ChangeGun(GetInitialGunName());
     }
 
     protected virtual void Start(){
@@ -69,7 +70,7 @@ public class Char : MonoBehaviour
     }
 
     protected virtual void FixedUpdate(){
-        Rigidbody rb = GetComponent<Rigidbody>();
+       Rigidbody rb = GetComponent<Rigidbody>();
         if( rb.velocity.y > 1 ){
             rb.velocity = new Vector3(rb.velocity.x, 1, rb.velocity.z);
         }
@@ -91,7 +92,7 @@ public class Char : MonoBehaviour
             }
         }
         if(!flag){
-            rb.velocity = new Vector3(0, -9, 0);
+            rb.velocity = new Vector3(rb.velocity.x, -9, rb.velocity.z);
         }
     }
 
@@ -197,9 +198,9 @@ public class Char : MonoBehaviour
     {
         GameObject gunPrefab = GameObject.Instantiate((UnityEngine.GameObject)Resources.Load(name), gunPosition.transform.position, transform.rotation);
         gunPrefab.transform.SetParent(transform);
-        GameObject.Destroy(gun);
-        gun = gunPrefab;
-        if (name == "Pistol")
+        GameObject.Destroy(currentGunObject);
+        currentGunObject = gunPrefab;
+        if (name == "Pistol" || name =="PistolShortRange")
             currentGun = (IGun)gunPrefab.GetComponent<Pistol>();
         if (name == "RocketLauncher")
             currentGun = (IGun)gunPrefab.GetComponent<Bazooka>();
@@ -207,5 +208,40 @@ public class Char : MonoBehaviour
             currentGun = (IGun)gunPrefab.GetComponent<FlameThrower>();
     }
 
+    /// <summary>
+    /// Shoots the current weapon
+    /// </summary>
+    /// <param name="point"></param>
+    public virtual void Shoot(Vector3 point)
+    {
+        stateMachine.ChangeState(new CharShooting(point, this));
+    }
+
+    /// <summary>
+    /// Returns the current gun of the player
+    /// </summary>
+    /// <returns></returns>
+    public IGun GetGun()
+    {
+        return currentGun;
+    }
+
+    /// <summary>
+    /// Get the initial gun name for the character, the one that uses starting the scene.
+    /// </summary>
+    /// <returns></returns>
+    public virtual string GetInitialGunName()
+    {
+        return "Pistol";
+    }
+
+    /// <summary>
+    /// Gets the movement speed of the character
+    /// </summary>
+    /// <returns></returns>
+    public float GetSpeed()
+    {
+        return speed;
+    }
 
 }

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Enemy : Char
 {
+    protected GameObject playerReference;
     protected override void Start()
     {
         base.Start();
+        playerReference = GameObject.FindGameObjectWithTag("Player");
     }
 
     protected override void FixedUpdate()

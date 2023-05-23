@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 44d42446bddada047a6833c2b5e7c611
+guid: cf20f20411db469498b60b6cabae0f11
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MAT_int_floor_broken_wood_bo
-    second: {fileID: 2100000, guid: aa1b84a87a19c1d46af4cb08c590639c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: int_floor_broken_alpha
-    second: {fileID: 2100000, guid: 53e964bed2305574e9e3b20cf586c1e6, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

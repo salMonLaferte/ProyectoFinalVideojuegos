@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Implements methods to control a rocket which explodes when touching an environment object.
+/// </summary>
 public class Rocket : Bullet
 {
     [SerializeField]

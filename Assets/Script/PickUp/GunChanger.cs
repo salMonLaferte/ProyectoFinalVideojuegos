@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Implements methods to control an object which changes the gun of the character who touches it.
+/// </summary>
 public class GunChanger : MonoBehaviour
 {
     /// <summary>
@@ -22,6 +24,7 @@ public class GunChanger : MonoBehaviour
 
     private void Update()
     {
+        //Rotate the object
         transform.RotateAround(transform.position, Vector3.up, Time.deltaTime * 90);
     }
 }

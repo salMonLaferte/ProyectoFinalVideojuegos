@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4652788671962675006}
   - component: {fileID: 4652788671962675007}
   m_Layer: 0
-  m_Name: Wall
+  m_Name: Wall - Copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

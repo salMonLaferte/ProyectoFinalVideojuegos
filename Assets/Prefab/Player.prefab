@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 7835429010144177695}
   - component: {fileID: 2116530756782154815}
   - component: {fileID: 6838578110362088702}
+  - component: {fileID: 198280412244896683}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -258,7 +259,7 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  speed: 30
+  speed: 50
   maxArmor: 100
   gunPosition: {fileID: 6327183813686611891}
   healthBarPrefab: {fileID: 0}
@@ -285,6 +286,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.403492, y: 18.515274, z: 3.9837303}
   m_Center: {x: -0.12996864, y: 8.812477, z: 0.077287674}
+--- !u!65 &198280412244896683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904342956554930113}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5252075, y: 17.069513, z: 1}
+  m_Center: {x: 0.114780426, y: 8.723451, z: 0}
 --- !u!1 &6327183813686611891
 GameObject:
   m_ObjectHideFlags: 0

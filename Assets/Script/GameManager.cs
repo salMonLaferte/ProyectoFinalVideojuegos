@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 /// <summary>
 /// Implements methods to control the general flow of the game
 /// </summary>
@@ -20,6 +21,7 @@ public static class  GameManager
         if(currentCheckpoint != null ){
             player.RespawnOnPoint(currentCheckpoint.GetRespawnPoint());
         }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 

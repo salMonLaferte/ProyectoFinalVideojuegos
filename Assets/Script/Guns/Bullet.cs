@@ -39,6 +39,8 @@ public class Bullet : MonoBehaviour
     /// </summary>
     protected float timer = 0;
 
+    [SerializeField]
+    DamageType damageType = 0;
 
     protected virtual void Start(){
         rb = GetComponent<Rigidbody>();
@@ -76,7 +78,7 @@ public class Bullet : MonoBehaviour
         if(damage > 0){
             if(refChar !=null ){
                 if( Char.ShouldTakeDamage(refChar, appliesDamageTo)){
-                    refChar.ModifyArmor(-damage);
+                    refChar.ReceiveDamage(-damage, damageType);
                 }
             }
         }
@@ -89,5 +91,12 @@ public class Bullet : MonoBehaviour
         Enemys = 0,
         Player = 1,
         Everyone = 2
+    }
+
+    public enum DamageType
+    {
+        Bullet = 0,
+        Rocket = 1,
+        Fire = 2
     }
 }

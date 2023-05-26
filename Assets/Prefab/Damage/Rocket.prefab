@@ -66,6 +66,7 @@ MonoBehaviour:
   speed: 60
   range: 60
   damage: 15
+  damageType: 1
   explosion: {fileID: 6779848410724936075, guid: a5c0f4c2193831741bd66b14e485e8da, type: 3}
   explosionParticles: {fileID: 3668251638647953552, guid: f4718649f1847154fa6e8360ddf7b821, type: 3}
 --- !u!65 &2912869830046708825

@@ -15,7 +15,7 @@ public class Rocket : Bullet
     protected override void OnTriggerEnter(Collider col)
     {
         base.OnTriggerEnter(col);
-        if (col.gameObject.CompareTag("Environment"))
+        if (col.gameObject.CompareTag("Environment") || col.gameObject.GetComponent<Enemy>() != null)
         {
             GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
             GameObject.Instantiate(explosionParticles, transform.position, Quaternion.identity);

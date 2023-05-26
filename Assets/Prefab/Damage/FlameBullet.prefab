@@ -4891,3 +4891,4 @@ MonoBehaviour:
   speed: 50
   range: 15
   damage: 6
+  damageType: 2

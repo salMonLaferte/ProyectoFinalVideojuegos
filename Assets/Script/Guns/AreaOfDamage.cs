@@ -81,7 +81,7 @@ public class AreaOfDamage : MonoBehaviour
     {
         while( charactersInsideTheArea.Contains(character) )
         {
-            character.ModifyArmor(-damage);
+            character.ReceiveDamage(-damage, Bullet.DamageType.Rocket);
             yield return new WaitForSeconds(timerForUnit);
         }
     }

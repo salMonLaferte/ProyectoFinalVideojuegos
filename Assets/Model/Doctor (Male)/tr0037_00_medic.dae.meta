@@ -3,7 +3,47 @@ guid: 70409d6de73d1014ca7f59e38926298f
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leye
+    second: {fileID: 2100000, guid: bf15bfea1a4a2c740b0d7dec32f36671, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Reye
+    second: {fileID: 2100000, guid: 0ff502e51c610c3409f0b363d8014409, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: c9f458c6a4851304c9077ce56c8b2ad9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body_skin
+    second: {fileID: 2100000, guid: 88d048916fbcf6f4d93d5bca89ee280d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: face
+    second: {fileID: 2100000, guid: b4ed320f449ccca49b3d3059d9a05972, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: face_parts
+    second: {fileID: 2100000, guid: 35b503fcbc42da241a3eca9129b7e658, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair
+    second: {fileID: 2100000, guid: a28b413ba022c4847b3f8a538044988a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: obj
+    second: {fileID: 2100000, guid: 66220888cb72e1545b832b8c133421ac, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -41,14 +41,15 @@ public class Char : MonoBehaviour
     
     protected bool damageCoroutineActive = false;
 
-    [HideInInspector]
     public UnityEvent<Char> characterDied = new UnityEvent<Char>();
     
     [HideInInspector]
     public UnityEvent<float,float> armorChanged = new UnityEvent<float,float>();
 
 
-    
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
     protected virtual void Awake(){
         if(healthBarPrefab !=null ){
              GameObject bar = GameObject.Instantiate(healthBarPrefab, transform.position + new Vector3(0,6,0), Quaternion.identity);
@@ -57,15 +58,20 @@ public class Char : MonoBehaviour
         }
         ChangeGun(GetInitialGunName());
     }
-
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
     protected virtual void Start(){
         movingTo = transform.position;
         stateMachine = new CharStateMachine(new CharIddle());
         armor = maxArmor;
     }
-
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
     protected virtual void Update()
     {
+        //updates the current state in the state machine
         stateMachine.GetCurrent().Update();
     }
 
@@ -95,32 +101,51 @@ public class Char : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, -9, rb.velocity.z);
         }
     }
-
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    /// <param name="col"></param>
     protected virtual void OnCollisionEnter(Collision col)
     {
 
     }
 
+    /// <summary>
+    /// Tracks where in the ground is the mouse pointing and returns that position.
+    /// </summary>
+    /// <returns>The position of the ground the mouse is pointing to</returns>
     protected Vector3 GetSelectedGroundPoint(){
         Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
         Physics.Raycast(r, out hit, 1000, GroundLayer);
         return hit.point;
     }
-
+    /// <summary>
+    /// Stuns the character for the specified amount of time
+    /// </summary>
+    /// <param name="time"></param>
     public void Stun(float time){
         if(!(stateMachine.GetCurrent() is CharStunned)){
             StartCoroutine(StunCoroutine(time));
         }
     }
-
+    /// <summary>
+    /// Coroutine that changes the character state to a stun state.
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
     IEnumerator StunCoroutine(float time){
         stateMachine.ChangeState( new CharStunned() );
         yield return new WaitForSeconds(time);
         stateMachine.StopStun();
     }
 
-    public void ModifyArmor(float amount){
+    /// <summary>
+    /// Modify the armor by the specified amount,
+    /// amount can be positive or negative
+    /// </summary>
+    /// <param name="amount"></param>
+    public virtual void ModifyArmor(float amount){
         armor += amount;
         if( armor > maxArmor)
             armor = maxArmor;
@@ -136,15 +161,33 @@ public class Char : MonoBehaviour
         }
     }
 
+    public virtual void ReceiveDamage(float amount, Bullet.DamageType damageType)
+    {
+        ModifyArmor(amount);
+    }
+
+    /// <summary>
+    /// Coroutine that makes the material blink when taking damage.
+    /// </summary>
+    /// <returns></returns>
     IEnumerator ChangeMaterialForDamage(){
         damageCoroutineActive = true;
         MeshRenderer[] meshes = GetComponentsInChildren<MeshRenderer>();
+        SkinnedMeshRenderer[] skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         for(int i=0; i< meshes.Length; i++){
-             meshes[i].material.SetFloat("Hurt", 1);
+            meshes[i].material.SetInt("_Hurt", 1);
+        }
+        for (int i = 0; i < skinnedMeshRenderers.Length; i++)
+        {
+            skinnedMeshRenderers[i].material.SetInt("_Hurt", 1);
         }
         yield return new WaitForSeconds(.1f);
         for(int i=0; i<meshes.Length; i++){
-            meshes[i].material.SetFloat("Hurt", 0);
+            meshes[i].material.SetInt("_Hurt", 0);
+        }
+        for (int i = 0; i < skinnedMeshRenderers.Length; i++)
+        {
+            skinnedMeshRenderers[i].material.SetInt("_Hurt", 0);
         }
         damageCoroutineActive = false;
     }
@@ -166,7 +209,7 @@ public class Char : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the max armor of the character
+    /// Returns the max armor of the character.
     /// </summary>
     /// <returns></returns>
     public float GetMaxArmor(){
@@ -174,14 +217,14 @@ public class Char : MonoBehaviour
     }
 
     /// <summary>
-    /// Restores an amount of armor
+    /// Restores an amount of armor.
     /// </summary>
     public void RestoreArmor(){
         ModifyArmor(maxArmor);
     }
 
     /// <summary>
-    /// Respawns the character in a determined position
+    /// Respawns the character in a determined position.
     /// </summary>
     /// <param name="position"></param>
     public void RespawnOnPoint(Vector3 position){
@@ -191,7 +234,7 @@ public class Char : MonoBehaviour
     }
 
     /// <summary>
-    /// Change the gun of the character
+    /// Change the gun of the character.
     /// </summary>
     /// <param name="name"></param>
     public virtual void ChangeGun(string name)
@@ -200,7 +243,7 @@ public class Char : MonoBehaviour
         gunPrefab.transform.SetParent(transform);
         GameObject.Destroy(currentGunObject);
         currentGunObject = gunPrefab;
-        if (name == "Pistol" || name =="PistolShortRange")
+        if (name == "Pistol" || name == "PistolShortRange")
             currentGun = (IGun)gunPrefab.GetComponent<Pistol>();
         if (name == "RocketLauncher")
             currentGun = (IGun)gunPrefab.GetComponent<Bazooka>();
@@ -209,7 +252,7 @@ public class Char : MonoBehaviour
     }
 
     /// <summary>
-    /// Shoots the current weapon
+    /// Shoots the current weapon.
     /// </summary>
     /// <param name="point"></param>
     public virtual void Shoot(Vector3 point)
@@ -236,12 +279,21 @@ public class Char : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets the movement speed of the character
+    /// Gets the movement speed of the character.
     /// </summary>
     /// <returns></returns>
     public float GetSpeed()
     {
         return speed;
+    }
+
+    /// <summary>
+    /// Get the current armor of the character.
+    /// </summary>
+    /// <returns></returns>
+    public float GetCurrentArmor()
+    {
+        return armor;
     }
 
 }

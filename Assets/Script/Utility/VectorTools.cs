@@ -6,6 +6,12 @@ using UnityEngine;
 /// </summary>
 public static class VectorTools
 {
+    /// <summary>
+    /// Returns the normalized direction of the proyected vectors in the XZ plane.
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="to"></param>
+    /// <returns></returns>
      public static Vector3 DirectionXZ(Vector3 from, Vector3 to){
         if(from==null || to == null)
             return Vector3.zero;
@@ -17,7 +23,12 @@ public static class VectorTools
         Vector3 dir3 = new Vector3(dir.x, 0, dir.y);
         return dir3;
     }
-
+    /// <summary>
+    /// Returns the distance between the proyected vectors int he XZ plane
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
     public static float DistanceXZ(Vector3  a, Vector3 b){
         if(a==null || b == null)
             return 0;
@@ -26,14 +37,25 @@ public static class VectorTools
         float distance = Vector2.Distance( v1, v2 );
         return distance;
     }
-
+    /// <summary>
+    /// Returns the distance from the vector a.transform.position proyected in the XZ plane to the vector
+    /// b.transform.position proyected in the XZ plane
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
     public static float DistanceXZ(Transform  a, Transform b){
         if(a==null || b == null)
             return 0;
         return DistanceXZ(a.position, b.position);
     }
 
-
+    /// <summary>
+    /// Returns the direction of the transform.position(s) vectors proyected in the XZ plane.
+    /// </summary>
+    /// <param name="from"></param>
+    /// <param name="to"></param>
+    /// <returns></returns>
     public static Vector3 DirectionXZ(Transform from, Transform to){
         if(from==null || to == null)
             return Vector3.zero;

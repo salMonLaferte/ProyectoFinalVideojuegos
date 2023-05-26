@@ -14,7 +14,7 @@ public interface IGun
     /// Shots the weapon in direction to the selectedPoint
     /// </summary>
     /// <returns></returns>
-    abstract void Shoot(Vector3 selectedPoint);
+    abstract int Shoot(Vector3 selectedPoint);
     /// <summary>
     /// Returns name of the weapon, should be same as prefab object of the weapon
     /// </summary>
@@ -30,5 +30,10 @@ public interface IGun
     /// </summary>
     /// <returns></returns>
     abstract void SetAppliesDamageTo(Bullet.AppliesDamageTo damageTo);
+    /// <summary>
+    /// Returns the recoil force for this weapon
+    /// </summary>
+    /// <returns></returns>
+    abstract int GetRecoil();
 }
 

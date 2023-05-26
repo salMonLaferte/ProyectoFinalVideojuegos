@@ -59,5 +59,13 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 6387645675042971298, guid: 11c8efa0d5383db4fb81dfbf037a3871, type: 3}
+    - target: {fileID: 7731937643048608509, guid: e2c08699aee1ea24a951591935655b9e, type: 3}
+      propertyPath: recoil
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731937643048608509, guid: e2c08699aee1ea24a951591935655b9e, type: 3}
+      propertyPath: cooldown
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2c08699aee1ea24a951591935655b9e, type: 3}

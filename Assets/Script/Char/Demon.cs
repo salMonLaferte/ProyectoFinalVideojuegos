@@ -17,7 +17,7 @@ public class Demon : Enemy
     /// <summary>
     /// Time in seconds that the demon spends shooting to the player.
     /// </summary>
-    float timeAtacking = 2f;
+    float timeAtacking = 3f;
     /// <summary>
     /// The damage applied by a fire bullet is multiplied by this factor.
     /// </summary>

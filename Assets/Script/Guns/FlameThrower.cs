@@ -28,6 +28,9 @@ public class FlameThrower : MonoBehaviour, IGun
     [SerializeField]
     GameObject bulletOrigin;
 
+    [SerializeField]
+    int recoil = 50;
+
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
@@ -42,14 +45,15 @@ public class FlameThrower : MonoBehaviour, IGun
     /// <inheritdoc/>
     /// </summary>
     /// <returns></returns>
-    public void Shoot(Vector3 selectedPoint)
+    public int Shoot(Vector3 selectedPoint)
     {
         if (onCooldown)
-            return;
+            return -1;
         StartCoroutine(Cooldown());
         Vector3 dir = VectorTools.DirectionXZ(bulletOrigin.transform.position, selectedPoint);
         GameObject b = GameObject.Instantiate(bullet, bulletOrigin.transform.position, transform.rotation);
         b.GetComponent<Bullet>().Initialize(appliesDamageTo, dir);
+        return 1;
     }
 
     /// <summary>
@@ -88,5 +92,13 @@ public class FlameThrower : MonoBehaviour, IGun
     public void SetAppliesDamageTo(Bullet.AppliesDamageTo damageTo)
     {
         appliesDamageTo = damageTo;
+    }
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    /// <returns></returns>
+    public int GetRecoil()
+    {
+        return recoil;
     }
 }

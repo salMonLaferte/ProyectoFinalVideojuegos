@@ -30,6 +30,9 @@ public class Bazooka : MonoBehaviour, IGun
     /// Who can damage this weapon
     /// </summary>
     Bullet.AppliesDamageTo appliesDamageTo;
+
+    [SerializeField]
+    int recoil = 150;
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
@@ -50,14 +53,15 @@ public class Bazooka : MonoBehaviour, IGun
     /// <inheritdoc/>
     /// </summary>
     /// <returns></returns>
-    public void Shoot(Vector3 selectedPoint)
+    public int Shoot(Vector3 selectedPoint)
     {
         if (onCooldown)
-            return;
+            return -1;
         StartCoroutine(Cooldown());
         Vector3 dir = VectorTools.DirectionXZ(bulletOrigin.transform.position, selectedPoint);
         GameObject b = GameObject.Instantiate(bullet, bulletOrigin.transform.position, transform.rotation);
         b.GetComponent<Bullet>().Initialize(appliesDamageTo, dir);
+        return 1;
     }
 
     /// <summary>
@@ -85,5 +89,13 @@ public class Bazooka : MonoBehaviour, IGun
     public void SetAppliesDamageTo(Bullet.AppliesDamageTo damageTo)
     {
         appliesDamageTo = damageTo;
+    }
+    /// <summary>
+    /// <inheritdoc/>
+    /// </summary>
+    /// <returns></returns>
+    public int GetRecoil()
+    {
+        return recoil;
     }
 }

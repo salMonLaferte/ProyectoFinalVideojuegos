@@ -59,7 +59,12 @@ public class CharShooting : CharState
     {
         while (shootingIsActive)
         {
-            character.GetGun().Shoot(selectedPoint);
+            int result = character.GetGun().Shoot(selectedPoint);
+            if (result == 1)
+            {
+                Vector3 dir = VectorTools.DirectionXZ(character.transform.position, selectedPoint);
+                character.GetComponent<Rigidbody>().AddForce( -character.GetGun().GetRecoil() * dir.normalized, ForceMode.Impulse);
+            }
             yield return new WaitForSeconds(character.GetGun().GetCooldown());
         }
     }

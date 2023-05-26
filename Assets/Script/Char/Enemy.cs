@@ -22,6 +22,7 @@ public class Enemy : Char
         base.Start();
         playerReference = GameObject.FindGameObjectWithTag("Player");
         currentGun.SetAppliesDamageTo(Bullet.AppliesDamageTo.Player);
+        characterDied.AddListener(DropItemRandomly);
     }
     /// <summary>
     /// <inheritdoc/>
@@ -37,5 +38,14 @@ public class Enemy : Char
     protected override void Update()
     {
         base.Update();
+    }
+
+    protected void  DropItemRandomly(Char c)
+    {
+        float r = Random.Range(0f, 1f);
+        if(r <= .1f)
+        {
+            GameObject.Instantiate(GameObject.Instantiate((UnityEngine.GameObject)Resources.Load("HealthPickup"), transform.position, transform.rotation));
+        }
     }
 }

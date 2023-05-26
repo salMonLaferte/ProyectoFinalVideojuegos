@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1433604719989381174, guid: 65d994f024c5b8c4aaaaee510cb636f6, type: 3}
   bulletOrigin: {fileID: 3347969649546089743}
+  recoil: 200
 --- !u!65 &9095976564152008480
 BoxCollider:
   m_ObjectHideFlags: 0

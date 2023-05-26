@@ -26,6 +26,7 @@ public class AreaOfDamage : MonoBehaviour
     /// <summary>
     /// What characters should take damage from this area
     /// </summary>
+    [SerializeField]
     Bullet.AppliesDamageTo appliesDamageTo;
     /// <summary>
     /// List of characters that are in the area of effect
@@ -38,7 +39,7 @@ public class AreaOfDamage : MonoBehaviour
             StartCoroutine(DestroyCoroutine());
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         Char character = collision.gameObject.GetComponent<Char>();
         if (character != null)
@@ -46,14 +47,17 @@ public class AreaOfDamage : MonoBehaviour
             //When character is on the area of effect add it to the list and start a routine to damage him
             if (Char.ShouldTakeDamage(character, appliesDamageTo))
             {
-                charactersInsideTheArea.Add(character);
-                character.characterDied.AddListener(OnCharacterDied);//Suscribe this object to know if the character died
-                StartCoroutine(DamageCoroutine(character));
+                if (!charactersInsideTheArea.Contains(character))
+                {
+                    charactersInsideTheArea.Add(character);
+                    character.characterDied.AddListener(OnCharacterDied);//Suscribe this object to know if the character died
+                    StartCoroutine(DamageCoroutine(character));
+                }
             }
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider collision)
     {
         //When character is out of the area of effect remove it from the list
         Char character = collision.gameObject.GetComponent<Char>();
@@ -82,7 +86,7 @@ public class AreaOfDamage : MonoBehaviour
         while( charactersInsideTheArea.Contains(character) )
         {
             character.ReceiveDamage(-damage, Bullet.DamageType.Rocket);
-            yield return new WaitForSeconds(timerForUnit);
+            yield return new WaitForSeconds(unitOfTime);
         }
     }
     /// <summary>

@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 34461488512872198, guid: 35baf8ae9c10d444191a6f3e714e87aa, type: 3}
   bulletOrigin: {fileID: 156384942453392460}
+  recoil: 20
 --- !u!1001 &729297077884328571
 PrefabInstance:
   m_ObjectHideFlags: 0

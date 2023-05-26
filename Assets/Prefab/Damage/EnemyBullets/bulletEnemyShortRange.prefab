@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1215568005709353940, guid: 35baf8ae9c10d444191a6f3e714e87aa, type: 3}
       propertyPath: range
-      value: 50
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1215568005709353940, guid: 35baf8ae9c10d444191a6f3e714e87aa, type: 3}
       propertyPath: speed
-      value: 60
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1215568005709353940, guid: 35baf8ae9c10d444191a6f3e714e87aa, type: 3}
       propertyPath: damage

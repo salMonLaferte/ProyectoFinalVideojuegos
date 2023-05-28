@@ -18,6 +18,10 @@ public class CharMoving : CharState
         base.Start();
         dir = VectorTools.DirectionXZ(character.gameObject.transform.position, to).normalized;
         character.gameObject.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(dir.x, dir.z)*Mathf.Rad2Deg, Vector3.up);
+        Animator anim = character.GetComponentInChildren<Animator>();
+        if(anim != null){
+            anim.SetBool("walking", true);
+        }
     }
 
     public override void Update()
@@ -35,5 +39,15 @@ public class CharMoving : CharState
             ExitState();
             character.GetComponent<Rigidbody>().velocity =  Vector3.zero;
         }
+    }
+
+    public override void ExitState()
+    {
+        Animator anim = character.GetComponentInChildren<Animator>();
+        if (anim != null)
+        {
+            anim.SetBool("walking", false);
+        }
+        base.ExitState();
     }
 }

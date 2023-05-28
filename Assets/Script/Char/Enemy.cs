@@ -21,7 +21,8 @@ public class Enemy : Char
     {
         base.Start();
         playerReference = GameObject.FindGameObjectWithTag("Player");
-        currentGun.SetAppliesDamageTo(Bullet.AppliesDamageTo.Player);
+        if(currentGun != null)
+            currentGun.SetAppliesDamageTo(Bullet.AppliesDamageTo.Player);
         characterDied.AddListener(DropItemRandomly);
     }
     /// <summary>

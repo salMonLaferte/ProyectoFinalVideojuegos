@@ -39,7 +39,7 @@ public class Zombie : Enemy
     /// <returns></returns>
     public override string GetInitialGunName()
     {
-        return "PistolShortRange";
+        return "none";
     }
 
     /// <summary>

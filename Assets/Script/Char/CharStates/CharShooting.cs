@@ -39,6 +39,7 @@ public class CharShooting : CharState
         character.gameObject.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(dir.x, dir.z)*Mathf.Rad2Deg, Vector3.up);
         character.GetComponent<Rigidbody>().velocity = new Vector3(0,character.GetComponent<Rigidbody>().velocity.y,0 );
         character.StartCoroutine(ShootingCoroutine());
+        Animator anim = character.GetComponent<Animator>();
     }
 
     public override void Update()

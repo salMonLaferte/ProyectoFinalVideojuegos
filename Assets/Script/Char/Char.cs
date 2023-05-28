@@ -240,6 +240,8 @@ public class Char : MonoBehaviour
     /// <param name="name"></param>
     public virtual void ChangeGun(string name)
     {
+        if (name == "none")
+            return;
         GameObject gunPrefab = GameObject.Instantiate((UnityEngine.GameObject)Resources.Load(name), gunPosition.transform.position, transform.rotation);
         gunPrefab.transform.SetParent(transform);
         GameObject.Destroy(currentGunObject);

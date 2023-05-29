@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class Bazooka : MonoBehaviour, IGun
 {
     /// <summary>
@@ -33,6 +33,10 @@ public class Bazooka : MonoBehaviour, IGun
 
     [SerializeField]
     int recoil = 150;
+
+    [SerializeField]
+    AudioClip shoot;
+
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
@@ -61,6 +65,8 @@ public class Bazooka : MonoBehaviour, IGun
         Vector3 dir = VectorTools.DirectionXZ(bulletOrigin.transform.position, selectedPoint);
         GameObject b = GameObject.Instantiate(bullet, bulletOrigin.transform.position, transform.rotation);
         b.GetComponent<Bullet>().Initialize(appliesDamageTo, dir);
+        GetComponent<AudioSource>().clip = shoot;
+        GetComponent<AudioSource>().Play();
         return 1;
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(AudioSource))]
 public class Char : MonoBehaviour
 {
     [Space(20)]
@@ -46,6 +47,8 @@ public class Char : MonoBehaviour
     [HideInInspector]
     public UnityEvent<float,float> armorChanged = new UnityEvent<float,float>();
 
+    [SerializeField] 
+    AudioClip hurt;
 
 
     /// <summary>
@@ -152,6 +155,15 @@ public class Char : MonoBehaviour
             armor = maxArmor;
         if(armor < 0)
             armor = 0;
+        if (hurt != null)
+        {
+            GameObject audioSource = new GameObject();
+            audioSource.AddComponent<AudioSource>();
+            GameObject.Instantiate(audioSource, transform.position, Quaternion.identity);
+            audioSource.GetComponent<AudioSource>().clip = hurt;
+            audioSource.GetComponent<AudioSource>().Play();
+        }
+            
         armorChanged.Invoke(armor, maxArmor);
         if(amount < 0 && !damageCoroutineActive)
             StartCoroutine(ChangeMaterialForDamage());

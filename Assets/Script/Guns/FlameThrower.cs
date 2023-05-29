@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class FlameThrower : MonoBehaviour, IGun
 {
     /// <summary>
@@ -31,6 +31,15 @@ public class FlameThrower : MonoBehaviour, IGun
     [SerializeField]
     int recoil = 50;
 
+    [SerializeField]
+    AudioClip shoot;
+
+    float timerSinceLastShoot;
+
+    float timeNeededToToggleSoundOff = .2f;
+
+    bool soundIsPlaying = false;
+
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
@@ -53,6 +62,10 @@ public class FlameThrower : MonoBehaviour, IGun
         Vector3 dir = VectorTools.DirectionXZ(bulletOrigin.transform.position, selectedPoint);
         GameObject b = GameObject.Instantiate(bullet, bulletOrigin.transform.position, transform.rotation);
         b.GetComponent<Bullet>().Initialize(appliesDamageTo, dir);
+        if (!soundIsPlaying)
+            StartCoroutine(SoundToggler());
+        else
+            timerSinceLastShoot = timeNeededToToggleSoundOff;
         return 1;
     }
 
@@ -65,6 +78,22 @@ public class FlameThrower : MonoBehaviour, IGun
         onCooldown = true;
         yield return new WaitForSeconds(cooldown);
         onCooldown = false;
+    }
+
+    IEnumerator SoundToggler()
+    {
+        GetComponent<AudioSource>().clip = shoot;
+        GetComponent<AudioSource>().Play();
+        timerSinceLastShoot = timeNeededToToggleSoundOff;
+        soundIsPlaying = true;
+        GetComponent<AudioSource>().loop = true;
+        while (timerSinceLastShoot > 0)
+        {
+            yield return new WaitForSeconds(.05f);
+            timerSinceLastShoot -= .05f;
+        }
+        GetComponent<AudioSource>().Stop();
+        soundIsPlaying = false;
     }
 
     /// <summary>

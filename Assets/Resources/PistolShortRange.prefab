@@ -55,6 +55,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PistolShortRange
       objectReference: {fileID: 0}
+    - target: {fileID: 6748227296687918932, guid: e2c08699aee1ea24a951591935655b9e, type: 3}
+      propertyPath: m_Pitch
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731937643048608509, guid: e2c08699aee1ea24a951591935655b9e, type: 3}
+      propertyPath: shoot
+      value: 
+      objectReference: {fileID: 8300000, guid: 8e840cf7dc889024791d76e14630a205, type: 3}
     - target: {fileID: 7731937643048608509, guid: e2c08699aee1ea24a951591935655b9e, type: 3}
       propertyPath: bullet
       value: 

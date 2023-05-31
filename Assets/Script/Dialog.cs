@@ -1,18 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class Dialog : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    string[] dialog;
+    
+    int count = 0;
+
+    [SerializeField]
+    AudioClip nextTextSound;
+
+    public void SetUp(string dialog)
     {
-        
+        this.dialog = dialog.Split(".\n");
+        Time.timeScale = 0;
+        UpdateText();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(1))
+        {
+            NextText();
+        }
+    }
+
+    void NextText()
+    {
+        count++;
+        if(count >= dialog.Length)
+        {
+            Time.timeScale = 1;
+            GameObject.Destroy(gameObject);
+        }
+        else{
+            UpdateText();
+        }
+    }
+
+    void UpdateText()
+    {
+        TMPro.TextMeshProUGUI tcomponent = GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        tcomponent.text = dialog[count];
     }
 }

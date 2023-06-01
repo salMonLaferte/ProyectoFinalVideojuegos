@@ -59,6 +59,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5357393167762229702, guid: 4ae4463f804d09c489c5a1f86c4b4f21, type: 3}
+      propertyPath: m_Cookie
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357393167762229702, guid: 4ae4463f804d09c489c5a1f86c4b4f21, type: 3}
+      propertyPath: m_Color.b
+      value: 0.035170313
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357393167762229702, guid: 4ae4463f804d09c489c5a1f86c4b4f21, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357393167762229702, guid: 4ae4463f804d09c489c5a1f86c4b4f21, type: 3}
+      propertyPath: m_Color.r
+      value: 0.02352941
+      objectReference: {fileID: 0}
     - target: {fileID: 5783948726380831509, guid: 4ae4463f804d09c489c5a1f86c4b4f21, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

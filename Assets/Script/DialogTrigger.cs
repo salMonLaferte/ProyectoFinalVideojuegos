@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class DialogTrigger : MonoBehaviour
 {
-    [SerializeField]
-    string dialog = "...";
+    [TextAreaAttribute(0,10)]
+    public string dialog = "...";
+
+    bool rotate = false;
+
+    private void Start()
+    {
+        if (gameObject.CompareTag("Book"))
+            rotate = true;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +21,10 @@ public class DialogTrigger : MonoBehaviour
         {
             GameObject dialogBox = GameObject.Instantiate((UnityEngine.GameObject)Resources.Load("Dialog"), transform.position, Quaternion.identity);
             dialogBox.GetComponent<Dialog>().SetUp(dialog);
+            if (gameObject.CompareTag("Book"))
+            {
+                GameManager.BookPickedUp();
+            }
             GameObject.Destroy(gameObject);
         }
     }
@@ -20,6 +32,10 @@ public class DialogTrigger : MonoBehaviour
     private void Update()
     {
         //Rotate the object
-        transform.RotateAround(transform.position, Vector3.up, Time.deltaTime * 90);
+        if (rotate)
+        {
+            transform.RotateAround(transform.position, Vector3.up, Time.deltaTime * 90);
+        }
+       
     }
 }

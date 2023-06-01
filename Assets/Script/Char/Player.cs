@@ -42,7 +42,7 @@ public class Player : Char
             bufferedClick = Vector3.zero;
         }
         //Shoot current gun
-        if(Input.GetMouseButton(0) && (stateMachine.GetCurrent() is CharIddle || stateMachine.GetCurrent() is CharMoving || stateMachine.GetCurrent() is CharShooting))
+        if(Input.GetMouseButton(0) && (stateMachine.GetCurrent() is CharIddle || stateMachine.GetCurrent() is CharMoving || stateMachine.GetCurrent() is CharShooting) && Time.timeScale !=0)
         {
             Shoot(selectedPoint);
             GameObject.Destroy(clickIndicator);

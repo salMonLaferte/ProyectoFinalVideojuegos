@@ -12,6 +12,8 @@ public static class  GameManager
     /// </summary>
     public static CheckPoint currentCheckpoint;
 
+    public static int bookCount;
+
     /// <summary>
     /// Function to call when the player dies:
     /// * Respawn the player in the last checkpoint
@@ -23,5 +25,12 @@ public static class  GameManager
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public static void BookPickedUp()
+    {
+        bookCount++;
+    }
+
+
 }
 

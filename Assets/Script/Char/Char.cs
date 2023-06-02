@@ -188,19 +188,23 @@ public class Char : MonoBehaviour
         MeshRenderer[] meshes = GetComponentsInChildren<MeshRenderer>();
         SkinnedMeshRenderer[] skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         for(int i=0; i< meshes.Length; i++){
-            meshes[i].material.SetInt("_Hurt", 1);
+            if(meshes[i] != null)
+                meshes[i].material.SetInt("_Hurt", 1);
         }
         for (int i = 0; i < skinnedMeshRenderers.Length; i++)
         {
-            skinnedMeshRenderers[i].material.SetInt("_Hurt", 1);
+            if(skinnedMeshRenderers[i] != null)
+                skinnedMeshRenderers[i].material.SetInt("_Hurt", 1);
         }
         yield return new WaitForSeconds(.1f);
         for(int i=0; i<meshes.Length; i++){
-            meshes[i].material.SetInt("_Hurt", 0);
+            if (meshes[i] != null)
+                meshes[i].material.SetInt("_Hurt", 0);
         }
         for (int i = 0; i < skinnedMeshRenderers.Length; i++)
         {
-            skinnedMeshRenderers[i].material.SetInt("_Hurt", 0);
+            if (skinnedMeshRenderers[i] != null)
+                skinnedMeshRenderers[i].material.SetInt("_Hurt", 0);
         }
         damageCoroutineActive = false;
     }

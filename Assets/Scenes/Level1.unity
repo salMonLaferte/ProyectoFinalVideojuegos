@@ -4676,7 +4676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog: "\xA1Debo haber perdido la cabeza! \nEn el hotel todav\xEDa ten\xEDa agua
-    y comida para tal vez otras dos semanas.\n\xA1No! ... \xBFQue diigo?! No es momento
+    y comida para tal vez otras dos semanas.\n\xA1No! ... \xBFQue digo?! No es momento
     de acobardarme.\n\xA1Si los rumores son ciertos el portal deber\xEDa de encontrarse
     por aqui!"
 --- !u!1001 &461912697
@@ -20012,6 +20012,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7256345750825964452, guid: f8c3dc09bd23b864d96dc162187b901c, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256345750825964453, guid: f8c3dc09bd23b864d96dc162187b901c, type: 3}
+      propertyPath: level
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7256345750825964457, guid: f8c3dc09bd23b864d96dc162187b901c, type: 3}

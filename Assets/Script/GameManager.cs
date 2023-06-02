@@ -23,7 +23,7 @@ public static class  GameManager
         if(currentCheckpoint != null ){
             player.RespawnOnPoint(currentCheckpoint.GetRespawnPoint());
         }
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameObject gameOver = GameObject.Instantiate((UnityEngine.GameObject)Resources.Load("GameOver"), Vector3.zero, Quaternion.identity);
     }
 
     public static void BookPickedUp()
@@ -31,6 +31,10 @@ public static class  GameManager
         bookCount++;
     }
 
+    public static void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
 }
 

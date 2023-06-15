@@ -12,6 +12,9 @@ public class Rocket : Bullet
     [SerializeField]
     GameObject explosionParticles;
 
+    [SerializeField]
+    AudioSource explosionSoundEffect;
+
     protected override void OnTriggerEnter(Collider col)
     {
         base.OnTriggerEnter(col);
@@ -19,6 +22,9 @@ public class Rocket : Bullet
         {
             GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
             GameObject.Instantiate(explosionParticles, transform.position, Quaternion.identity);
+            explosionSoundEffect.Play();
+            explosionSoundEffect.transform.parent = null;
+            GameObject.Destroy(explosionSoundEffect, 1);
             GameObject.Destroy(gameObject);
         }
     }

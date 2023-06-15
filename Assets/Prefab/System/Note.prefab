@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8077958487012661907}
   - component: {fileID: 8077958487012661906}
-  - component: {fileID: 8077958487012661904}
+  - component: {fileID: 6282107544772651802}
   m_Layer: 0
   m_Name: Note
   m_TagString: Book
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog: ...
---- !u!65 &8077958487012661904
-BoxCollider:
+--- !u!135 &6282107544772651802
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -58,8 +58,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.753845, y: 3.028494, z: 6.904228}
-  m_Center: {x: 0.1016922, y: 0.9977312, z: -0.08939743}
+  m_Radius: 3.1686287
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5690492059192359032
 PrefabInstance:
   m_ObjectHideFlags: 0

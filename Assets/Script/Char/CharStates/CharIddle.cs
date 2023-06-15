@@ -6,9 +6,11 @@ using UnityEngine;
 /// </summary>
 public class CharIddle : CharState
 {
+
     public override void Start()
     {
         base.Start();
+        
     }
 
     public override void Update()

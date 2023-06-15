@@ -228,6 +228,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   hurt: {fileID: 8300000, guid: c31e9ef3b81a39147af5461d01467b5d, type: 3}
+  deathParticles: {fileID: 2104258659192286273, guid: 4c2d530bb4dc3564a806820234e1ba65, type: 3}
   patrolArea: {fileID: 0}
 --- !u!65 &2755977336561394118
 BoxCollider:

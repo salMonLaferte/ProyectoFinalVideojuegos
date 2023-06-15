@@ -6,10 +6,13 @@ using UnityEngine;
 /// </summary>
 public class RocketVulnerable : MonoBehaviour
 {
+    [SerializeField]
+    GameObject destroyParticles;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Rocket>() != null)
         {
+            GameObject.Instantiate(destroyParticles, transform.position + new Vector3(0, 10, 0), Quaternion.identity);
             GameObject.Destroy(gameObject);
         }
     }

@@ -50,6 +50,8 @@ public class Char : MonoBehaviour
     [SerializeField] 
     AudioClip hurt;
 
+    [SerializeField]
+    GameObject deathParticles;
 
     /// <summary>
     /// <inheritdoc/>
@@ -155,7 +157,7 @@ public class Char : MonoBehaviour
             armor = maxArmor;
         if(armor < 0)
             armor = 0;
-        if (hurt != null)
+        if (hurt != null && amount <0)
         {
             GameObject audioSource = new GameObject();
             audioSource.AddComponent<AudioSource>();
@@ -169,8 +171,15 @@ public class Char : MonoBehaviour
             StartCoroutine(ChangeMaterialForDamage());
         if(armor <= 0){
             characterDied.Invoke(this);
-            if( gameObject.GetComponent<Player>() == null )
-                GameObject.Destroy(gameObject); 
+            if( gameObject.GetComponent<Player>() == null)
+            {
+                GameObject.Destroy(gameObject);
+                if(deathParticles != null)
+                {
+                    GameObject.Instantiate(deathParticles, transform.position, Quaternion.identity);
+                }
+            }
+                
         }
     }
 

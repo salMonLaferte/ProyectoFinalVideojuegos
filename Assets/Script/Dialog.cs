@@ -11,6 +11,7 @@ public class Dialog : MonoBehaviour
     [SerializeField]
     AudioClip nextTextSound;
 
+
     public void SetUp(string dialog)
     {
         this.dialog = dialog.Split("\n");
@@ -32,6 +33,15 @@ public class Dialog : MonoBehaviour
         if(count >= dialog.Length)
         {
             Time.timeScale = 1;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if(player != null)
+            {
+                Player p = player.GetComponent<Player>();
+                if (p.GetComponent<Player>() != null)
+                {
+                    p.ChangeToIddle();
+                }
+            }
             GameObject.Destroy(gameObject);
         }
         else{
@@ -41,6 +51,7 @@ public class Dialog : MonoBehaviour
 
     void UpdateText()
     {
+        GetComponent<AudioSource>().Play();
         TMPro.TextMeshProUGUI tcomponent = GetComponentInChildren<TMPro.TextMeshProUGUI>();
         tcomponent.text = dialog[count];
     }

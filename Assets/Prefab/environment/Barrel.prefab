@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5021894382985379940}
+  - component: {fileID: 8388685278935102597}
+  - component: {fileID: 7359197923719503067}
   m_Layer: 0
   m_Name: Barrel
   m_TagString: Environment
@@ -32,6 +34,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8388685278935102597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778702156188633049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f520405756c0448b76d001e09ac24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyParticles: {fileID: 1097138526780047940, guid: 084eafd7781199748bd4c0d043732501, type: 3}
+--- !u!65 &7359197923719503067
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778702156188633049}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.8391953, y: 9.781054, z: 5.9994316}
+  m_Center: {x: -0.016025543, y: 4.9994316, z: 0.0640955}
 --- !u!1001 &1333297181230460019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98,21 +126,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 287968aa525f9e94195cf61a9a486e8a, type: 3}
   m_PrefabInstance: {fileID: 1333297181230460019}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2180229754392170786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 287968aa525f9e94195cf61a9a486e8a, type: 3}
-  m_PrefabInstance: {fileID: 1333297181230460019}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &4988036853284407930
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2180229754392170786}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.8391953, y: 9.781054, z: 5.9994316}
-  m_Center: {x: -0.016025543, y: 4.9994316, z: 0.0640955}

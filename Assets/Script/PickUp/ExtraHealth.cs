@@ -8,12 +8,18 @@ public class ExtraHealth : MonoBehaviour
     [SerializeField]
     float amount = 20f;
 
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField]
+    AudioSource pickSound;
+
+    private void OnTriggerEnter(Collider collision)
     {
 
         if (collision.gameObject.GetComponent<Player>())
         {
             collision.gameObject.GetComponent<Player>().ModifyArmor(amount);
+            pickSound.gameObject.transform.SetParent(null);
+            pickSound.Play();
+            GameObject.Destroy(pickSound.gameObject, 1f);
             GameObject.Destroy(gameObject);
         }
     }

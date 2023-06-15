@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class Player : Char
 {
     [SerializeField]
@@ -74,5 +74,11 @@ public class Player : Char
     {
         base.ChangeGun(name);
         currentGun.SetAppliesDamageTo(appliesDamageTo);
+    }
+
+    public void ChangeToIddle()
+    {
+        stateMachine.ChangeState(new CharIddle());
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }

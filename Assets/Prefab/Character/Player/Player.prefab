@@ -271,7 +271,7 @@ MonoBehaviour:
   armorChanged:
     m_PersistentCalls:
       m_Calls: []
-  hurt: {fileID: 0}
+  hurt: {fileID: 8300000, guid: b72f2cd2f7dc63c46ad1cfec325a92c3, type: 3}
   bullet: {fileID: 34461488512872198, guid: 35baf8ae9c10d444191a6f3e714e87aa, type: 3}
   appliesDamageTo: 0
   bufferedClick: {x: 0, y: 0, z: 0}

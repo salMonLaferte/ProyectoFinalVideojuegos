@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogTrigger : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class DialogTrigger : MonoBehaviour
     bool rotate = false;
 
     bool canPick = true;
+
+    [SerializeField]
+    UnityEvent<float> dialogFinished;
+
 
     private void Start()
     {
@@ -24,12 +29,19 @@ public class DialogTrigger : MonoBehaviour
             StartCoroutine(delayToTouchAgain());
             GameObject dialogBox = GameObject.Instantiate((UnityEngine.GameObject)Resources.Load("Dialog"), transform.position, Quaternion.identity);
             dialogBox.GetComponent<Dialog>().SetUp(dialog);
+            dialogBox.GetComponent<Dialog>().dialogFinished.AddListener(this.onDialogFinished);
             if (gameObject.CompareTag("Book"))
             {
                 GameManager.BookPickedUp();
-            }else
-                GameObject.Destroy(gameObject);
+            }
+
         }
+    }
+
+    public void onDialogFinished(float x)
+    {
+        dialogFinished.Invoke(x);
+        GameObject.Destroy(gameObject);
     }
 
     private void Update()

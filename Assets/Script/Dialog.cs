@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 [RequireComponent(typeof(AudioSource))]
 public class Dialog : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Dialog : MonoBehaviour
     [SerializeField]
     AudioClip nextTextSound;
 
+    public UnityEvent<float> dialogFinished = new UnityEvent<float>();
 
     public void SetUp(string dialog)
     {
@@ -42,6 +44,7 @@ public class Dialog : MonoBehaviour
                     p.ChangeToIddle();
                 }
             }
+            dialogFinished.Invoke(1);
             GameObject.Destroy(gameObject);
         }
         else{

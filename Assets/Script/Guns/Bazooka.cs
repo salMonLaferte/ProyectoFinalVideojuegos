@@ -37,6 +37,11 @@ public class Bazooka : MonoBehaviour, IGun
     [SerializeField]
     AudioClip shoot;
 
+    private void Start()
+    {
+        StartCoroutine(Cooldown(.5f));
+    }
+
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
@@ -61,7 +66,7 @@ public class Bazooka : MonoBehaviour, IGun
     {
         if (onCooldown)
             return -1;
-        StartCoroutine(Cooldown());
+        StartCoroutine(Cooldown(1));
         Vector3 dir = VectorTools.DirectionXZ(bulletOrigin.transform.position, selectedPoint);
         GameObject b = GameObject.Instantiate(bullet, bulletOrigin.transform.position, transform.rotation);
         b.GetComponent<Bullet>().Initialize(appliesDamageTo, dir);
@@ -74,10 +79,10 @@ public class Bazooka : MonoBehaviour, IGun
     /// Cooldown coroutine that sets the pistol on cooldown for the amount of seconds specified
     /// </summary>
     /// <returns></returns>
-    IEnumerator Cooldown()
+    IEnumerator Cooldown(float factor)
     {
         onCooldown = true;
-        yield return new WaitForSeconds(cooldown);
+        yield return new WaitForSeconds(factor*cooldown);
         onCooldown = false;
     }
     /// <summary>

@@ -4617,6 +4617,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog: "Da click derecho en la direcci\xF3n que quieres moverte. (Presiona espacio
     para continuar)"
+  dialogFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &458661541
 GameObject:
   m_ObjectHideFlags: 0
@@ -4679,6 +4682,9 @@ MonoBehaviour:
     y comida para tal vez otras dos semanas.\n\xA1No! ... \xBFQue digo?! No es momento
     de acobardarme.\n\xA1Si los rumores son ciertos el portal deber\xEDa de encontrarse
     por aqui!"
+  dialogFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &461912697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6106,7 +6112,7 @@ PrefabInstance:
       propertyPath: dialog
       value: "Expediente de elegido #B213.\nLa monitorizaci\xF3n del cerebro arroja
         un malestar emocional beta y un malestar f\xEDsico alfa.\nEl casco de control
-        requiere cambi\xF3 constante de bater\xEDa y abastecimiento qu\xEDmico cada
+        requiere cambio constante de bater\xEDa y abastecimiento qu\xEDmico cada
         dos horas, de lo contrario el sujeto podr\xEDa despertar del coma inducido."
       objectReference: {fileID: 0}
     - target: {fileID: 8077958487012661907, guid: 94150ff5824f93f48aece6a32d263f45, type: 3}
@@ -6287,6 +6293,9 @@ MonoBehaviour:
   dialog: "El viejo laboratorio s\xED que se ve muy destruido.\nEl olor tambien es
     bastante fuerte, a ratos huele como si hubiese un gato muerto y de repente huele
     a plastico quemado."
+  dialogFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &635285359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6717,6 +6726,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialog: "\xBFPero qu\xE9 rayos es esa cosa?!"
+  dialogFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &684863948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7056,6 +7068,9 @@ MonoBehaviour:
     no importa, mejor me concentro... \xBFComo funcionaban estas armas?\nAh... ya
     recuerdo, presionar A y D para cambiar de arma...\nLuego dar click en la direcci\xF3n
     en la que quiero disparar... "
+  dialogFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &723602370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14804,6 +14819,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog: 'Estos escombros bloquean el paso, me pregunto si alguna de mis armas podra
     destruirlos... '
+  dialogFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1542233425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19806,6 +19824,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialog: "\xBFPero que rayos es este cadaver que est\xE1 en el piso?!\nNo tiene
     forma... \xBFQu\xE9 clase de experimentos hac\xEDan aqu\xED?"
+  dialogFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1143588358107909061
 PrefabInstance:
   m_ObjectHideFlags: 0

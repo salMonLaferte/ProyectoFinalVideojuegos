@@ -272,10 +272,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   hurt: {fileID: 8300000, guid: b72f2cd2f7dc63c46ad1cfec325a92c3, type: 3}
+  deathParticles: {fileID: 0}
   bullet: {fileID: 34461488512872198, guid: 35baf8ae9c10d444191a6f3e714e87aa, type: 3}
   appliesDamageTo: 0
   bufferedClick: {x: 0, y: 0, z: 0}
   clickIndicatorPrefab: {fileID: 6262170733800664089, guid: 479cefdbf43aaaf4abe8ee2c37699509, type: 3}
+  gunChange: {fileID: 8300000, guid: ecce11b232b0dcf438a9b239f0808877, type: 3}
 --- !u!65 &6838578110362088702
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScene.unity
     guid: b9747f4264c7faa42ae9f0d799d54232
+  - enabled: 1
+    path: Assets/Scenes/Heaven.unity
+    guid: 11b5309b2a317b449a1bd432c2639b2d
   m_configObjects: {}

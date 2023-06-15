@@ -3276,15 +3276,16 @@ PrefabInstance:
     - target: {fileID: 8077958487012661906, guid: 94150ff5824f93f48aece6a32d263f45, type: 3}
       propertyPath: dialog
       value: "Diario de la  Dra. Sharon Valenwood. Segunda encargada de la investigaci\xF2n.\nVengo
-        del s\xE9ptimo piso donde se encuentra el portal.\nYa casi esta listo, a\xF9n
-        as\xED las fuerzas con las que nos estamos involucrando son desconocidas,
-        esto no me gusta nada.\nCada d\xECa es m\xE1s fuerte el rumor de que la investigaci\xF3n
+        del s\xE9ptimo piso donde se encuentra el portal.\nYa casi est\xE1 listo,
+        a\xFAn as\xED las fuerzas con las que nos estamos involucrando son desconocidas,
+        esto no me gusta nada.\nCada d\xEDa es m\xE1s fuerte el rumor de que la investigaci\xF3n
         de la Dra. Lisa Yamaoka est\xE1 basada en un libro antiguo de ocultismo y
         poco m\xE1s.\nEl otro d\xEDa en su oficina pude ver archivos extra\xF1os
-        en el escritorio de su computadora.\nArchivos como \"Necronomi.pdf\" y \"Clav\xECculasSalomon.pdf\".\nLa
-        doctora Lisa es muy talentosa pero s\xE9 que esconde algo.\nDebo dejar constancia
-        de esto por escrito a pesar de correr el riesgo de que me descubra, ya que
-        no puedo abandonar el laboratorio seg\xFAn ella por razones de seguriidad.\n"
+        en el escritorio de su computadora.\nArchivos como \"Necronomicon.pdf\" y
+        \"ClaviculasSalomon.pdf\".\nLa doctora Lisa es muy talentosa pero s\xE9 que
+        esconde algo.\nDebo dejar constancia de esto por escrito a pesar de correr
+        el riesgo de que me descubra, ya que no puedo abandonar el laboratorio seg\xFAn
+        ella por razones de seguridad.\n"
       objectReference: {fileID: 0}
     - target: {fileID: 8077958487012661907, guid: 94150ff5824f93f48aece6a32d263f45, type: 3}
       propertyPath: m_RootOrder

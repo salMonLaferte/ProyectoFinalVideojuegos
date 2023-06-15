@@ -20,6 +20,10 @@ public class Player : Char
 
     GunSelector gunSelector = new GunSelector();
 
+    [SerializeField]
+    AudioClip gunChange;
+
+
     protected override void Start()
     {
         base.Start();
@@ -52,10 +56,14 @@ public class Player : Char
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
+            GetComponent<AudioSource>().clip = gunChange;
+            GetComponent<AudioSource>().Play();
             ChangeGun(gunSelector.PreviousWeapon());
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
+            GetComponent<AudioSource>().clip = gunChange;
+            GetComponent<AudioSource>().Play();
             ChangeGun(gunSelector.NextWeapon());
         }
 
@@ -81,4 +89,5 @@ public class Player : Char
         stateMachine.ChangeState(new CharIddle());
         GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
+
 }

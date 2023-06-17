@@ -41,7 +41,8 @@ public class DialogTrigger : MonoBehaviour
     public void onDialogFinished(float x)
     {
         dialogFinished.Invoke(x);
-        GameObject.Destroy(gameObject);
+        if (!gameObject.CompareTag("Book"))
+            GameObject.Destroy(gameObject);
     }
 
     private void Update()
